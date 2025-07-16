@@ -1,0 +1,141 @@
+:root {
+  /* Font */
+  font-family: "Figtree", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  /* Font weights */
+  --fw-medium: 500;
+  --fw-extra-bold: 800;
+
+  /* Font sizes */
+  --fs-small: 14px;
+  --fs-medium: 16px;
+  --fs-large: 24px;
+
+  color-scheme: light dark;
+  color: var(--gray-950);
+  background-color: var(--yellow);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Spacing */
+  --space-50: 4px;
+  --space-100: 8px;
+  --space-150: 12px;
+  --space-300: 24px;
+
+  /* Radius */
+  --radius-4: 4px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-20: 20px;
+
+  /* Colors */
+  --yellow: #f4d04e;
+  --gray-500: #6b6b6b;
+  --gray-950: #111111;
+  --white: #ffffff;
+  --shadow: 8px 8px 0 0 black;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("assets/fonts/static/Figtree-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("assets/fonts/static/Figtree-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Text presets */
+.text-preset-1 {
+  font-weight: var(--fw-extra-bold);
+  font-size: var(--fs-large);
+}
+.text-preset-2 {
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-medium);
+}
+.text-preset-3 {
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-small);
+}
+.text-preset-3-bold {
+  font-weight: var(--fw-extra-bold);
+  font-size: var(--fs-small);
+}
+
+body {
+  font-family: inherit;
+  color: var(--gray-950);
+  background-color: var(--yellow);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app {
+  background-color: var(--white);
+  border: 1px solid var(--gray-950);
+  border-radius: var(--radius-20);
+  box-shadow: var(--shadow);
+  padding: var(--space-300);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-300);
+}
+
+.app > img {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-10);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-150);
+  width: 336px;
+}
+
+.category {
+  display: inline-block;
+  background-color: var(--yellow);
+  padding: var(--space-50) var(--space-150);
+  border-radius: var(--radius-4);
+  align-self: flex-start;
+}
+
+.description {
+  color: var(--gray-500);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-150);
+}
+
+.author img {
+  width: 32px;
+  height: 32px;
+}
