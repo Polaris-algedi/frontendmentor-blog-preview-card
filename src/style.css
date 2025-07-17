@@ -6,24 +6,27 @@
   --fw-medium: 500;
   --fw-extra-bold: 800;
 
-  /* Font sizes */
-  --fs-small: 14px;
-  --fs-medium: 16px;
-  --fs-large: 24px;
+  /* Font sizes Desktop */
+  --fs-desk-small: 0.875rem; /* 14px */
+  --fs-desk-medium: 1rem; /* 16px */
+  --fs-desk-large: 1.5rem; /* 24px */
 
-  color-scheme: light dark;
-  color: var(--gray-950);
-  background-color: var(--yellow);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Font sizes Mobile */
+  --fs-mobile-small: 0.75rem; /* 12px */
+  --fs-mobile-medium: 0.875rem; /* 14px */
+  --fs-mobile-large: 1.25rem; /* 20px */
 
   /* Spacing */
-  --space-50: 4px;
-  --space-100: 8px;
-  --space-150: 12px;
+  --space-50: 0.25rem; /* 4px */
+  --space-100: 0.5rem; /* 8px */
+  --space-150: 0.75rem; /* 12px */
+  --space-300: 1.5rem; /* 24px */
+
+  /* Radius */
+  --radius-4: 0.25rem; /* 4px */
+  --radius-10: 0.625rem; /* 10px */
+  --radius-12: 0.75rem; /* 12px */
+  --radius-20: 1.25rem; /* 20px */
   --space-300: 24px;
 
   /* Radius */
@@ -68,19 +71,39 @@
 /* Text presets */
 .text-preset-1 {
   font-weight: var(--fw-extra-bold);
-  font-size: var(--fs-large);
+  font-size: var(--fs-desk-large);
+  font-size: clamp(
+    var(--fs-mobile-large),
+    0.57vw + 1.12rem,
+    var(--fs-desk-large)
+  );
 }
 .text-preset-2 {
   font-weight: var(--fw-medium);
-  font-size: var(--fs-medium);
+  font-size: var(--fs-desk-medium);
+  font-size: clamp(
+    var(--fs-mobile-medium),
+    0.38vw + 0.8rem,
+    var(--fs-desk-medium)
+  );
 }
 .text-preset-3 {
   font-weight: var(--fw-medium);
-  font-size: var(--fs-small);
+  font-size: var(--fs-desk-small);
+  font-size: clamp(
+    var(--fs-mobile-small),
+    0.19vw + 0.7rem,
+    var(--fs-desk-small)
+  );
 }
 .text-preset-3-bold {
   font-weight: var(--fw-extra-bold);
-  font-size: var(--fs-small);
+  font-size: var(--fs-desk-small);
+  font-size: clamp(
+    var(--fs-mobile-small),
+    0.19vw + 0.7rem,
+    var(--fs-desk-small)
+  );
 }
 
 body {
@@ -102,11 +125,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-300);
+  width: clamp(20.5rem, 60vw, 24rem);
+  max-width: 100vw;
 }
 
 .app > img {
   width: 100%;
-  height: 200px;
+  /* height: 200px; */
   border-radius: var(--radius-10);
 }
 
@@ -114,7 +139,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-150);
-  max-width: 336px;
+  width: 100%;
 }
 
 .category {
@@ -136,11 +161,33 @@ body {
 }
 
 .author img {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .title:hover {
   color: var(--yellow);
   cursor: pointer;
 }
+
+/* Responsive styles */
+/*
+
+
+Disktop styles     --->  Mobile styles 
+--fs-small: 14px;  --->  --fs-small: 12px;
+--fs-medium: 16px; --->  --fs-medium: 14px;
+--fs-large: 24px;  --->  --fs-large: 20px;
+
+Difference = Max - Min = 14px - 12px = 2px  
+Viewport range = 1440px - 375px = 1065px  
+vw = (Difference / Viewport range) × 100 = (2 / 1065) × 100 ≈ 0.19vw
+
+
+font-size: clamp(12px, 0.19vw + 0.7rem, 14px);
+font-size: clamp(14px, 0.38vw + 0.8rem, 16px);
+font-size: clamp(20px, 0.57vw + 1.120rem, 24px);
+
+
+
+*/
